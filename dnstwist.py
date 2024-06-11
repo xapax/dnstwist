@@ -983,7 +983,8 @@ class Scanner(threading.Thread):
 				except NXDOMAIN:
 					nxdomain = True
 				except NoNameservers:
-					task['dns_ns'] = ['!ServFail']
+					pass
+					# task['dns_ns'] = ['!ServFail']
 				except DNSException as e:
 					_debug(e)
 
@@ -992,7 +993,8 @@ class Scanner(threading.Thread):
 						task['dns_a'] = _answer_to_list(resolve(domain, rdtype=dns.rdatatype.A))
 						dns_a = True
 					except NoNameservers:
-						task['dns_a'] = ['!ServFail']
+						pass
+						# task['dns_a'] = ['!ServFail']
 					except DNSException as e:
 						_debug(e)
 
@@ -1000,7 +1002,8 @@ class Scanner(threading.Thread):
 						task['dns_aaaa'] = _answer_to_list(resolve(domain, rdtype=dns.rdatatype.AAAA))
 						dns_aaaa = True
 					except NoNameservers:
-						task['dns_aaaa'] = ['!ServFail']
+						pass
+						# task['dns_aaaa'] = ['!ServFail']
 					except DNSException as e:
 						_debug(e)
 
@@ -1009,7 +1012,8 @@ class Scanner(threading.Thread):
 						task['dns_mx'] = _answer_to_list(resolve(domain, rdtype=dns.rdatatype.MX))
 						dns_mx = True
 					except NoNameservers:
-						task['dns_mx'] = ['!ServFail']
+						pass
+						# task['dns_mx'] = ['!ServFail']
 					except DNSException as e:
 						_debug(e)
 			else:
@@ -1017,7 +1021,8 @@ class Scanner(threading.Thread):
 					addrinfo = socket.getaddrinfo(domain, None, proto=socket.IPPROTO_TCP)
 				except socket.gaierror as e:
 					if e.errno == -3:
-						task['dns_a'] = ['!ServFail']
+						pass
+						# task['dns_a'] = ['!ServFail']
 				except Exception as e:
 					_debug(e)
 				else:
